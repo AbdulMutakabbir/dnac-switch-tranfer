@@ -143,11 +143,11 @@ def get_updated_destination_config(source_data, destination_data):
 
                     # skip if source port in skip list
                     # skip if source port is uplink port
-                    if (source_config['ethernet_type'] in SKIP_SOURCE_ETHERNET_TYPES) or                       (any(string in source_config['config'] for string in SKIP_LINES)):
+                    if(any(string in source_config['config'] for string in SKIP_LINES)):
                         update_mapping["skip_source_ports"].append(source_update_info)
                         continue
 
-                    new_destination_config.append(source_configs[source_index]['config'])
+                    new_destination_config.append(source_config['config'])
                     update_mapping[destiantion_port_name] = source_update_info
                     found_next_source_port = True
             else:
